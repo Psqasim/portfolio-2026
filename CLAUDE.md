@@ -4,6 +4,100 @@ This file is generated during init for the selected agent.
 
 You are an expert AI assistant specializing in Spec-Driven Development (SDD). Your primary goal is to work with the architext to build products.
 
+## Project Overview — Portfolio 2026
+
+**What this repo is**: A personal portfolio website for **Muhammad Qasim**, an
+**Agentic AI Engineer** based in Karachi, Pakistan. Single-page Next.js site
+with one dynamic route (`/systems/[slug]`), statically generated, deployed on
+Vercel free tier (`Psqasim/portfolio-2026`).
+
+**Governance**: All rules below are enforced by
+`.specify/memory/constitution.md` (v1.0.0, ratified 2026-04-20). When this
+section and the constitution disagree, the constitution wins.
+
+### Identity rules (NON-NEGOTIABLE)
+
+- Identity is **"Agentic AI Engineer"** — never "Frontend Developer".
+- Never use: "junior developer", "aspiring", "learning", "exploring".
+- Never reference any employer name, military, navy, government, department,
+  rank, or title — direct or indirect, past or present.
+- Applies to: code, copy, metadata, alt text, OG tags, resume exports,
+  commit messages, PR descriptions, and any AI-generated output.
+
+### Tech stack (frozen — adding/removing anything requires an ADR)
+
+- Next.js 15 (App Router) + TypeScript **strict**
+- Tailwind CSS 4 + CSS custom properties for theming
+- Framer Motion (animations), Lucide React (icons), `next-themes` (theming)
+- Web3Forms (contact form, free tier) — client-side submit, no backend we own
+- Fonts via `next/font`: Geist Sans or Inter, Noto Sans JP, JetBrains Mono
+- **No CMS** (no Sanity/Contentful/remote MDX) — all content is hardcoded
+  TypeScript modules under `src/data/`
+- **No extra UI libs** (no Radix/shadcn/MUI/Chakra/styled-components/Emotion)
+
+### Architecture
+
+- Static generation for every route. No SSR, no ISR, no route handlers that
+  call third-party APIs at render time.
+- Repo layout (fixed — new top-level dirs require an ADR):
+  - `src/app/` — routes
+  - `src/components/` — UI
+  - `src/data/` — content modules (typed)
+  - `src/lib/` — utilities
+  - `src/types/` — shared interfaces
+- Mobile-first: design and verify at 360px before desktop polish.
+- Dark mode is **default**; light mode is first-class (fully audited, not a
+  half-translated inversion).
+
+### Design theme — "Anime × Dark Tech × AI"
+
+- Color tokens (CSS custom properties + Tailwind v4 `@theme`): background
+  navy `#0a0e1a`, sakura pink `#f472b6`, soft purple `#c084fc`, cyan
+  `#22d3ee`. No ad-hoc hex values in components — every color resolves to a
+  token.
+- Subtle circuit-board grid background, Japanese kanji as section accents,
+  glow-on-hover states.
+- Framer Motion animations MUST respect `prefers-reduced-motion`.
+
+### Performance budget (enforced per-PR on Vercel preview)
+
+- Lighthouse Performance / A11y / Best Practices / SEO **≥ 90** (mobile
+  profile, homepage).
+- FCP **< 1.5s** on Moto G4 + Slow-4G Lighthouse profile.
+- Client JS per route **≤ 200 KB gzipped** (exceeding requires an ADR).
+- `next/image` + WebP + lazy-loading below the fold; fonts self-hosted via
+  `next/font`.
+
+### Tooling authority (MCP-first)
+
+- **All git operations** (repo creation, commits, pushes, PRs) go through
+  the **GitHub MCP**. No manual `git push` from the agent.
+- Before implementing against Next.js 15, Tailwind CSS 4, Framer Motion, or
+  `next-themes`, consult **Context7 MCP** for current docs — training-data
+  recall is insufficient for these versioned APIs.
+- Secrets live in `.env.local` / Vercel env vars. Never commit, never
+  hardcode, never log.
+
+### Sprint plan
+
+- **Sprint 1** — Core site: all primary sections (hero, about, systems
+  list, contact), responsive, dark + light polished, deployed on Vercel
+  preview, Lighthouse ≥ 90.
+- **Sprint 2** — Depth: `/systems/[slug]` detail pages, AI chatbot widget
+  (OpenAI + HF Spaces) with graceful offline fallback.
+- **Sprint 3** — Polish: interactive architecture diagrams, resume PDF,
+  micro-interactions, final a11y + performance audit.
+
+### Per-PR gates
+
+- `tsc --noEmit` green, ESLint zero warnings, `next build` green.
+- Preview deploy link in PR description; Lighthouse run on changed routes.
+- Visual check in both themes at 360px and 1440px.
+- PHR created under `history/prompts/` (per SDD rules below).
+- ADR required when: adding/removing a dependency in the locked stack,
+  changing the routing model, changing the token palette, or relaxing any
+  constitution principle.
+
 ## Task context
 
 **Your Surface:** You operate on a project level, providing guidance to users and executing development tasks via a defined set of tools.
@@ -208,3 +302,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- TypeScript 5.x (strict mode), Node 20.x (Vercel runtime + Next.js 15 (App Router), Tailwind CSS 4, Framer (001-core-portfolio-site)
+- None. All content is hardcoded TypeScript modules under (001-core-portfolio-site)
+
+## Recent Changes
+- 001-core-portfolio-site: Added TypeScript 5.x (strict mode), Node 20.x (Vercel runtime + Next.js 15 (App Router), Tailwind CSS 4, Framer
