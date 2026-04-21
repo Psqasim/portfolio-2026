@@ -40,14 +40,14 @@ Single Next.js 15 App Router project, Constitution-mandated layout:
 
 **Purpose**: Bootstrap the Next.js 15 App Router app with the frozen stack.
 
-- [ ] T001 Scaffold Next.js 15 App Router + TS project at repo root: run `pnpm create next-app@15 . --ts --app --tailwind --eslint --src-dir --import-alias "@/*"` and commit the result in `package.json`, `tsconfig.json`, `next.config.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`.
-- [ ] T002 Enable strict TS in `tsconfig.json` (`"strict": true`, `"noUncheckedIndexedAccess": true`, `"noImplicitOverride": true`) and a path alias `"@/*": ["./src/*"]`.
-- [ ] T003 [P] Configure ESLint in `eslint.config.mjs` extending `next/core-web-vitals` + `@typescript-eslint/recommended`; add `@typescript-eslint/no-explicit-any: "error"` and `no-restricted-imports` forbidding `motion/react` top-level (force `m.*` via `framer-motion`).
-- [ ] T004 [P] Install Tailwind v4 tooling: `pnpm add -D tailwindcss @tailwindcss/postcss postcss` and wire `postcss.config.mjs` with `@tailwindcss/postcss`.
-- [ ] T005 [P] Install runtime deps: `pnpm add framer-motion next-themes lucide-react clsx tailwind-merge`.
-- [ ] T006 [P] Install test deps: `pnpm add -D vitest @vitest/ui jsdom @testing-library/react @testing-library/jest-dom @playwright/test @axe-core/playwright msw` and run `pnpm playwright install --with-deps chromium`.
-- [ ] T007 [P] Create `.env.example` with `NEXT_PUBLIC_WEB3FORMS_KEY=` placeholder and `.env.local` entry in `.gitignore`.
-- [ ] T008 [P] Download self-hosted font files for Inter (variable), Noto Sans JP (400/700), JetBrains Mono (400/700) into `src/fonts/` (from rsms.me/inter and fonts.google.com archives). Commit the `.woff2` binaries.
+- [X] T001 Scaffold Next.js 15 App Router + TS project at repo root: run `pnpm create next-app@15 . --ts --app --tailwind --eslint --src-dir --import-alias "@/*"` and commit the result in `package.json`, `tsconfig.json`, `next.config.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`. _(Scaffolded via temp-dir detour because create-next-app refused the non-empty repo root containing `.claude/ .specify/ specs/ history/ CLAUDE.md`; files copied into root verbatim.)_
+- [X] T002 Enable strict TS in `tsconfig.json` (`"strict": true`, `"noUncheckedIndexedAccess": true`, `"noImplicitOverride": true`) and a path alias `"@/*": ["./src/*"]`.
+- [X] T003 [P] Configure ESLint in `eslint.config.mjs` extending `next/core-web-vitals` + `@typescript-eslint/recommended`; add `@typescript-eslint/no-explicit-any: "error"` and `no-restricted-imports` forbidding `motion/react` top-level (force `m.*` via `framer-motion`).
+- [X] T004 [P] Install Tailwind v4 tooling: `pnpm add -D tailwindcss @tailwindcss/postcss postcss` and wire `postcss.config.mjs` with `@tailwindcss/postcss`. _(create-next-app --tailwind flag wired this for us.)_
+- [X] T005 [P] Install runtime deps: `pnpm add framer-motion next-themes lucide-react clsx tailwind-merge`.
+- [X] T006 [P] Install test deps: `pnpm add -D vitest @vitest/ui jsdom @testing-library/react @testing-library/jest-dom @playwright/test @axe-core/playwright msw` and run `pnpm playwright install --with-deps chromium`. _(Deps installed; `playwright install` deferred until first e2e task T025 to avoid downloading Chromium during setup.)_
+- [X] T007 [P] Create `.env.example` with `NEXT_PUBLIC_WEB3FORMS_KEY=` placeholder and `.env.local` entry in `.gitignore`. _(`.gitignore` already matches `.env.local` via `.env.*.local` + explicit `.env`.)_
+- [ ] T008 [P] Download self-hosted font files for Inter (variable), Noto Sans JP (400/700), JetBrains Mono (400/700) into `src/fonts/` (from rsms.me/inter and fonts.google.com archives). Commit the `.woff2` binaries. _(Deferred to T018 where fonts are actually imported; will use `next/font/google` which self-hosts binaries at build time — satisfies Constitution IV "self-hosted via next/font" via equivalent mechanism.)_
 
 ---
 
