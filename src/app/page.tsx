@@ -1,3 +1,6 @@
+import { Hero } from "@/components/sections/Hero";
+import { Systems } from "@/components/sections/Systems";
+
 export default function HomePage() {
   return (
     <>
@@ -5,16 +8,8 @@ export default function HomePage() {
       {/* TODO: US2 — Navbar mounted in T049 */}
 
       <main>
-        {/* TODO: US1 — <Hero /> mounted in T041 */}
-        <section id="home" className="min-h-[50vh] flex items-center justify-center p-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold">Muhammad Qasim</h1>
-            <p className="mt-2 text-lg opacity-70">Agentic AI Engineer</p>
-          </div>
-        </section>
-
-        {/* TODO: US1 — <Systems /> mounted in T041 */}
-        <section id="systems" className="min-h-[30vh]" aria-label="Systems (coming)" />
+        <Hero />
+        <Systems />
 
         {/* TODO: US3 — <Skills /> mounted in T056 */}
         <section id="skills" className="min-h-[30vh]" aria-label="Skills (coming)" />
