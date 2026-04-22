@@ -11,13 +11,12 @@ export const personal: PersonalProfile = {
     "I build autonomous AI systems that run 24/7 — MCP servers, multi-agent orchestration, and production-grade agent workflows.",
   heroMetrics: "5 systems shipped · 200+ tests passing · Deployed on cloud",
 
-  // TODO: US3 — about bio populated in T057.
-  aboutBio: "",
+  aboutBio:
+    "Software developer based in Karachi, Pakistan. Working professional by day, agentic AI systems builder around the clock. Currently enrolled in GIAIC, where I've shipped 5 production-grade AI systems through their hackathon program — from autonomous agents to MCP servers to cloud-native orchestration. I don't explore technologies. I ship them.",
 
-  // TODO: US4 — quote populated in T068.
   quote: {
-    text: "",
-    attribution: "",
+    text: "Surpass your limits. Right here, right now.",
+    attribution: "Yami Sukehiro",
   },
 
   socials: [
@@ -31,8 +30,25 @@ export const personal: PersonalProfile = {
     { platform: "email", href: "mailto:muhammadqasim0326@gmail.com", label: "Email" },
   ],
 
-  // TODO: US3 — education populated in T058.
-  education: [],
+  education: [
+    {
+      institution: "GIAIC",
+      credential:
+        "Certified AI, Metaverse & Web 3.0 Developer & Solopreneur (WMD)",
+      dateRange: "2023 – Present",
+      current: true,
+    },
+    {
+      institution: "Govt Islamia Science College",
+      credential: "Intermediate",
+      dateRange: "2019",
+    },
+    {
+      institution: "Bahria Model School",
+      credential: "Matriculation",
+      dateRange: "2017",
+    },
+  ],
 
   email: "muhammadqasim0326@gmail.com",
   copyright: "© 2026 Muhammad Qasim",
