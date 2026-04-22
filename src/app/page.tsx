@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { Systems } from "@/components/sections/Systems";
+import { Contact } from "@/components/sections/Contact";
 
 export default function HomePage() {
   return (
@@ -17,8 +18,7 @@ export default function HomePage() {
         {/* TODO: US3 — <About /> mounted in T060 */}
         <section id="about" className="min-h-[30vh]" aria-label="About (coming)" />
 
-        {/* TODO: US2 — <Contact /> mounted in T049 */}
-        <section id="contact" className="min-h-[30vh]" aria-label="Contact (coming)" />
+        <Contact />
 
         {/* TODO: US4 — <Footer /> mounted in T069 */}
       </main>

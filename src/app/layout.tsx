@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { ToastProvider } from "@/components/ui/Toast";
 import { personSchema } from "@/lib/jsonld";
 import { personal } from "@/data/personal";
 import "./globals.css";
@@ -84,7 +85,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={fontClass}>
       <body className="antialiased">
         <ThemeProvider>
-          <MotionProvider>{children}</MotionProvider>
+          <MotionProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </MotionProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

@@ -20,8 +20,16 @@ export const personal: PersonalProfile = {
     attribution: "",
   },
 
-  // TODO: US3 — socials populated in T059 (LinkedIn URL fixed per FR-025).
-  socials: [],
+  socials: [
+    { platform: "github", href: "https://github.com/Psqasim", label: "GitHub" },
+    {
+      platform: "linkedin",
+      href: "https://linkedin.com/in/muhammadqasim-dev",
+      label: "LinkedIn",
+    },
+    { platform: "x", href: "#", label: "X" },
+    { platform: "email", href: "mailto:muhammadqasim0326@gmail.com", label: "Email" },
+  ],
 
   // TODO: US3 — education populated in T058.
   education: [],

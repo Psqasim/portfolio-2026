@@ -141,17 +141,17 @@ values.
 
 ### Tests for User Story 2 (write first, expect fail)
 
-- [ ] T042 [P] [US2] Playwright smoke in `tests/e2e/us2-contact-info.spec.ts` — scroll to `#contact`; assert visible email link `mailto:muhammadqasim0326@gmail.com`, "Karachi, Pakistan" text, GitHub + LinkedIn + X icons, LinkedIn href equals `https://linkedin.com/in/muhammadqasim-dev`; assert no element contains a phone number pattern.
-- [ ] T043 [P] [US2] Playwright smoke in `tests/e2e/us2-form-success.spec.ts` — intercept POST to `api.web3forms.com/submit` → 200 `{success: true}`; fill form, submit, assert success toast visible within 5 s, fields cleared.
-- [ ] T044 [P] [US2] Playwright smoke in `tests/e2e/us2-form-error.spec.ts` — intercept POST → `{success: false, message: "rate limit"}`; submit, assert error toast visible; fields retain values.
-- [ ] T045 [P] [US2] Playwright smoke in `tests/e2e/us2-form-validation.spec.ts` — submit with empty message → inline error, no network request fired (listen to `page.on("request")`).
+- [X] T042 [P] [US2] Playwright smoke in `tests/e2e/us2-contact-info.spec.ts` — scroll to `#contact`; assert visible email link `mailto:muhammadqasim0326@gmail.com`, "Karachi, Pakistan" text, GitHub + LinkedIn + X icons, LinkedIn href equals `https://linkedin.com/in/muhammadqasim-dev`; assert no element contains a phone number pattern.
+- [X] T043 [P] [US2] Playwright smoke in `tests/e2e/us2-form-success.spec.ts` — intercept POST to `api.web3forms.com/submit` → 200 `{success: true}`; fill form, submit, assert success toast visible within 5 s, fields cleared.
+- [X] T044 [P] [US2] Playwright smoke in `tests/e2e/us2-form-error.spec.ts` — intercept POST → `{success: false, message: "rate limit"}`; submit, assert error toast visible; fields retain values.
+- [X] T045 [P] [US2] Playwright smoke in `tests/e2e/us2-form-validation.spec.ts` — submit with empty message → inline error, no network request fired (listen to `page.on("request")`).
 
 ### Implementation for User Story 2
 
-- [ ] T046 [US2] Fill `src/data/personal.ts` socials + contact fields: `email`, `location`, `socials` array with GitHub (`https://github.com/Psqasim`), LinkedIn (`https://linkedin.com/in/muhammadqasim-dev`), X (placeholder URL — dimmed non-clickable if real handle absent; leave `href: "#"` with `data-placeholder="true"`).
-- [ ] T047 [P] [US2] Create `src/components/ui/Toast.tsx` — headless toast host using a React context + queue; `variant: "success" | "error"`; auto-dismiss 6 s for success, manual dismiss for error; ARIA `role="status"` / `role="alert"` respectively.
-- [ ] T048 [US2] Create `src/components/sections/Contact.tsx` — client component. Left column: info cards (email, location, socials). Right column: form with Name (maxLength 100), Email (type="email", pattern validated via a small regex), Message (maxLength 4000, shows char counter). Submit handler: client validate, assemble `FormData`, POST to `https://api.web3forms.com/submit` per `contracts/web3forms.md` (8 s `AbortController`), emit toast. Fields retain on error.
-- [ ] T049 [US2] Mount `<Contact />` in `src/app/page.tsx` replacing its placeholder; mount `<ToastProvider>` in `src/app/layout.tsx` inside `<MotionProvider>` so every route can emit toasts.
+- [X] T046 [US2] Fill `src/data/personal.ts` socials + contact fields: `email`, `location`, `socials` array with GitHub (`https://github.com/Psqasim`), LinkedIn (`https://linkedin.com/in/muhammadqasim-dev`), X (placeholder URL — dimmed non-clickable if real handle absent; leave `href: "#"` with `data-placeholder="true"`).
+- [X] T047 [P] [US2] Create `src/components/ui/Toast.tsx` — headless toast host using a React context + queue; `variant: "success" | "error"`; auto-dismiss 6 s for success, manual dismiss for error; ARIA `role="status"` / `role="alert"` respectively.
+- [X] T048 [US2] Create `src/components/sections/Contact.tsx` — client component. Left column: info cards (email, location, socials). Right column: form with Name (maxLength 100), Email (type="email", pattern validated via a small regex), Message (maxLength 4000, shows char counter). Submit handler: client validate, assemble `FormData`, POST to `https://api.web3forms.com/submit` per `contracts/web3forms.md` (8 s `AbortController`), emit toast. Fields retain on error.
+- [X] T049 [US2] Mount `<Contact />` in `src/app/page.tsx` replacing its placeholder; mount `<ToastProvider>` in `src/app/layout.tsx` inside `<MotionProvider>` so every route can emit toasts.
 
 **Checkpoint**: US1 + US2 both shipped. A visitor can reach out via any of
 four channels and the form round-trips in under 5 s.
