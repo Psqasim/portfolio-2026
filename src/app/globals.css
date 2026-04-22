@@ -67,3 +67,19 @@ body {
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+@keyframes preloader-fill {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.preloader-bar {
+  animation: preloader-fill 2.4s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-bar {
+    animation: none;
+    transform: translateX(0);
+  }
+}

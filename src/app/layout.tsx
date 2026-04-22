@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { ToastProvider } from "@/components/ui/Toast";
+import { Preloader } from "@/components/layout/Preloader";
+import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { personSchema } from "@/lib/jsonld";
 import { personal } from "@/data/personal";
@@ -87,6 +89,8 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           <MotionProvider>
+            <Preloader />
+            <Navbar />
             <ToastProvider>
               {children}
               <Footer />
