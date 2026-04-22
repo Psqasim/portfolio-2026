@@ -30,10 +30,10 @@ const header = [
   "",
 ];
 
-const systemLines = systems.map(
-  (s) =>
-    `- ${s.name}${s.roleBadge ? ` (${s.roleBadge})` : ""} — ${s.tagline}\n  ${s.githubUrl}`,
-);
+const systemLines = systems.map((s) => {
+  const head = `- ${s.name}${s.roleBadge ? ` (${s.roleBadge})` : ""} — ${s.tagline}`;
+  return s.githubUrl ? `${head}\n  ${s.githubUrl}` : head;
+});
 
 const contact = [
   "",

@@ -15,7 +15,7 @@ export interface System {
   roleBadge?: string;
   metrics: SystemMetric[];
   tech: string[];
-  githubUrl: string;
+  githubUrl?: string;
   liveUrl?: string;
 }
 

@@ -13,9 +13,11 @@ describe("systems data module", () => {
     }
   });
 
-  it("each githubUrl starts with https://github.com/", () => {
+  it("each githubUrl (when present) starts with https://github.com/", () => {
     for (const s of systems) {
-      expect(s.githubUrl).toMatch(/^https:\/\/github\.com\//);
+      if (s.githubUrl) {
+        expect(s.githubUrl).toMatch(/^https:\/\/github\.com\//);
+      }
     }
   });
 

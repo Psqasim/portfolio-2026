@@ -56,16 +56,18 @@ export function SystemCard({ system }: { system: System }) {
       </div>
 
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-        <a
-          href={system.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-testid="system-github"
-          className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium text-[var(--color-text)] hover:border-[var(--color-accent-pink)]"
-        >
-          <Github className="h-3.5 w-3.5" aria-hidden />
-          GitHub
-        </a>
+        {system.githubUrl ? (
+          <a
+            href={system.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="system-github"
+            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium text-[var(--color-text)] hover:border-[var(--color-accent-pink)]"
+          >
+            <Github className="h-3.5 w-3.5" aria-hidden />
+            GitHub
+          </a>
+        ) : null}
         {system.liveUrl ? (
           <a
             href={system.liveUrl}

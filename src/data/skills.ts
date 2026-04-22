@@ -6,12 +6,12 @@ export const skillCategories: SkillCategory[] = [
     label: "AI & Agents",
     kanji: "知能",
     skills: [
-      { name: "OpenAI", icon: "openai" },
-      { name: "Anthropic Claude", icon: "anthropic" },
-      { name: "MCP", icon: "mcp" },
-      { name: "LangGraph", icon: "langgraph" },
-      { name: "Agent SDK", icon: "agent-sdk" },
-      { name: "Hugging Face", icon: "huggingface" },
+      { name: "OpenAI Agents SDK", icon: "openai-agents" },
+      { name: "Claude Code", icon: "claude-code" },
+      { name: "MCP (Model Context Protocol)", icon: "mcp" },
+      { name: "FastMCP", icon: "fastmcp" },
+      { name: "Prompt Engineering", icon: "prompt" },
+      { name: "A2A Protocol", icon: "a2a" },
     ],
   },
   {
@@ -19,11 +19,11 @@ export const skillCategories: SkillCategory[] = [
     label: "Languages & Frameworks",
     kanji: "言語",
     skills: [
-      { name: "TypeScript", icon: "typescript" },
       { name: "Python", icon: "python" },
-      { name: "Node.js", icon: "nodejs" },
-      { name: "FastAPI", icon: "fastapi" },
+      { name: "TypeScript", icon: "typescript" },
       { name: "Next.js", icon: "nextjs" },
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Node.js", icon: "nodejs" },
     ],
   },
   {
@@ -33,13 +33,13 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Docker", icon: "docker" },
       { name: "Kubernetes", icon: "kubernetes" },
-      { name: "GitHub Actions", icon: "github-actions" },
+      { name: "Dapr", icon: "dapr" },
+      { name: "Kafka", icon: "kafka" },
+      { name: "Oracle Cloud", icon: "oracle-cloud" },
+      { name: "Hugging Face Spaces", icon: "huggingface" },
       { name: "Vercel", icon: "vercel" },
-      { name: "AWS", icon: "aws" },
-      { name: "Cloudflare", icon: "cloudflare" },
-      { name: "Nginx", icon: "nginx" },
-      { name: "Linux", icon: "linux" },
-      { name: "Git", icon: "git" },
+      { name: "PM2", icon: "pm2" },
+      { name: "WSL2", icon: "wsl" },
     ],
   },
   {
@@ -47,8 +47,8 @@ export const skillCategories: SkillCategory[] = [
     label: "Data & Storage",
     kanji: "情報",
     skills: [
-      { name: "PostgreSQL", icon: "postgres" },
-      { name: "Redis", icon: "redis" },
+      { name: "Neon PostgreSQL", icon: "neon" },
+      { name: "Confluent Kafka", icon: "confluent" },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "React", icon: "react" },
       { name: "Tailwind CSS", icon: "tailwind" },
       { name: "Framer Motion", icon: "framer" },
-      { name: "shadcn/ui patterns", icon: "shadcn" },
+      { name: "NextAuth.js", icon: "nextauth" },
     ],
   },
 ];
