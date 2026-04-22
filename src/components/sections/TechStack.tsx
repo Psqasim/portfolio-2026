@@ -6,9 +6,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function TechStack() {
   return (
-    <FadeInSection className="py-24">
+    <FadeInSection id="skills" className="py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-        <SectionHeader title="Tech Stack" kanji="技術" id="skills" />
+        <SectionHeader title="Tech Stack" kanji="技術" />
         <div className="flex flex-col gap-10">
           {skillCategories.map((category) => (
             <div key={category.slug} data-testid="skill-category">

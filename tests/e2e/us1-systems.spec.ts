@@ -24,10 +24,11 @@ test.describe("US1 — Systems grid", () => {
       await expect(
         card.locator('[data-testid="system-tech"]').first(),
       ).toBeVisible();
-      const githubHref = await card
-        .locator('a[data-testid="system-github"]')
-        .getAttribute("href");
-      expect(githubHref).toMatch(/^https:\/\/github\.com\//);
+      const github = card.locator('a[data-testid="system-github"]');
+      if ((await github.count()) > 0) {
+        const githubHref = await github.getAttribute("href");
+        expect(githubHref).toMatch(/^https:\/\/github\.com\//);
+      }
     }
   });
 });

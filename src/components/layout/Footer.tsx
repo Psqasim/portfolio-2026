@@ -86,9 +86,9 @@ export function Footer() {
 
         <blockquote className="mt-12 border-l-2 border-[#f472b6] pl-4 text-sm italic text-[#e2e8f0]">
           &ldquo;{personal.quote.text}&rdquo;
-          <footer className="mt-1 not-italic text-xs text-[#94a3b8]">
+          <cite className="mt-1 block not-italic text-xs text-[#94a3b8]">
             — {personal.quote.attribution}
-          </footer>
+          </cite>
         </blockquote>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-[#64748b] md:flex-row md:items-center md:justify-between">

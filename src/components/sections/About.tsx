@@ -11,9 +11,9 @@ export function About() {
   const [imgOk, setImgOk] = useState(true);
 
   return (
-    <FadeInSection className="py-24">
+    <FadeInSection id="about" className="py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-        <SectionHeader title="About" kanji="自己紹介" id="about" />
+        <SectionHeader title="About" kanji="自己紹介" />
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[240px_1fr]">
           <div className="flex justify-center md:justify-start">
             <div className="relative h-60 w-60 overflow-hidden rounded-2xl shadow-[0_0_48px_-12px_var(--color-accent-pink)] ring-1 ring-[var(--color-accent-pink)]/40">

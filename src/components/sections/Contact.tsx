@@ -106,9 +106,9 @@ export function Contact() {
   }
 
   return (
-    <FadeInSection className="py-24">
+    <FadeInSection id="contact" className="py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-        <SectionHeader title="Let's Build Something" id="contact" />
+        <SectionHeader title="Let's Build Something" />
         <p className="mb-10 max-w-2xl text-[var(--color-text-muted)]">
           Looking for an AI engineer? Want to collaborate on an agent project? Just want to say
           salam? Drop a message.

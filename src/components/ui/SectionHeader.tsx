@@ -3,12 +3,10 @@ import { cn } from "@/lib/cn";
 export function SectionHeader({
   title,
   kanji,
-  id,
   className,
 }: {
   title: string;
   kanji?: string;
-  id: string;
   className?: string;
 }) {
   return (
@@ -21,10 +19,7 @@ export function SectionHeader({
           {kanji}
         </span>
       ) : null}
-      <h2
-        id={id}
-        className="relative text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-text)]"
-      >
+      <h2 className="relative text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-text)]">
         {title}
       </h2>
       <div className="mt-3 h-px w-16 bg-gradient-to-r from-[var(--color-accent-pink)] to-transparent" />
