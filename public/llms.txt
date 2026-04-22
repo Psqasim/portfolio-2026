@@ -1,0 +1,26 @@
+# Muhammad Qasim — Agentic AI Engineer
+
+Karachi, Pakistan. I build autonomous AI systems that run 24/7 — MCP servers, multi-agent orchestration, and production-grade agent workflows.
+
+## About
+
+Software developer based in Karachi, Pakistan. Working professional by day, agentic AI systems builder around the clock. Currently enrolled in GIAIC, where I've shipped 5 production-grade AI systems through their hackathon program — from autonomous agents to MCP servers to cloud-native orchestration. I don't explore technologies. I ship them.
+
+## Shipped systems
+
+- CRM Digital FTE — Autonomous customer-support agent handling WhatsApp tickets end-to-end, 24/7.
+  https://github.com/Psqasim/crm-digital-fte
+- Personal AI Employee — Private multi-skill agent that triages email, runs research, and drafts replies.
+  https://github.com/Psqasim/personal-ai-employee
+- TaskFlow — Agent-orchestrated task pipeline — ingest, plan, execute, report.
+  https://github.com/Psqasim/taskflow
+- Factory-de-Odoo (Architecture Advisor) — Multi-agent Odoo automation for manufacturing — inventory, orders, QA.
+  https://github.com/Psqasim/factory-de-odoo
+- MCP-Native Developer Tool — Dev-loop accelerator built as first-class MCP server — Cerebral Valley entry.
+  https://github.com/Psqasim/mcp-native-developer-tool
+
+## Contact
+
+Email: muhammadqasim0326@gmail.com
+GitHub: https://github.com/Psqasim
+LinkedIn: https://linkedin.com/in/muhammadqasim-dev

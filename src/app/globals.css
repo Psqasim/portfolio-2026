@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Dark mode via class on <html> (next-themes with attribute="class"). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Default theme = dark. Tokens keyed by purpose, not color. */
+@theme {
+  --color-bg-navy: #0a0e1a;
+  --color-card: #0f1629;
+  --color-border: #1e293b;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+
+  --color-accent-pink: #f472b6;
+  --color-accent-purple: #c084fc;
+  --color-accent-cyan: #22d3ee;
+
+  --color-status-live: #22d3ee;
+  --color-status-shipped: #c084fc;
+  --color-status-active: #f472b6;
+  --color-status-applied: #94a3b8;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-jp: var(--font-noto-jp), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* Light-mode inversion — audited palette, not a naive invert. */
+:where(html:not(.dark)) {
+  --color-bg-navy: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+
+  --color-accent-pink: #ec4899;
+  --color-accent-purple: #7c3aed;
+  --color-accent-cyan: #0891b2;
+
+  --color-status-live: #0891b2;
+  --color-status-shipped: #7c3aed;
+  --color-status-active: #ec4899;
+  --color-status-applied: #475569;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-bg-navy);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus-visible accent for keyboard nav. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-pink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@keyframes preloader-fill {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.preloader-bar {
+  animation: preloader-fill 2.4s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-bar {
+    animation: none;
+    transform: translateX(0);
+  }
+}
