@@ -54,6 +54,3 @@ Thumbs.db
 
 # Vercel
 .vercel
-
-# Forbidden-terms sensitive list (Constitution Principle I — gitignored per research.md R-008)
-scripts/forbidden-terms.txt
