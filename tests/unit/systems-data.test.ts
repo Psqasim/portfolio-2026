@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { systems } from "@/data/systems";
 
 describe("systems data module", () => {
-  it("exports exactly 5 entries", () => {
-    expect(systems).toHaveLength(5);
+  it("exports exactly 6 entries", () => {
+    expect(systems).toHaveLength(6);
   });
 
   it("each entry has 2–4 metrics inclusive", () => {

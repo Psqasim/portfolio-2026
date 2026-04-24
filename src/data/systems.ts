@@ -22,7 +22,7 @@ export const systems: System[] = [
       "NextAuth.js",
     ],
     githubUrl: "https://github.com/Psqasim/crm-digital-fte",
-    liveUrl: "https://crm-digital-fte-two.vercel.app",
+    liveUrl: "https://crm-digital-fte-two.vercel.app/",
   },
   {
     slug: "personal-ai-employee",
@@ -45,6 +45,21 @@ export const systems: System[] = [
       "WhatsApp (Baileys)",
     ],
     githubUrl: "https://github.com/Psqasim/personal-ai-employee",
+    liveUrl: "http://129.151.151.212:3000/dashboard",
+  },
+  {
+    slug: "physical-ai-textbook",
+    name: "Physical AI Humanoid Textbook",
+    status: "SHIPPED",
+    tagline: "Interactive AI Education Platform",
+    metrics: [
+      { label: "Type", value: "Textbook" },
+      { label: "Platform", value: "Docusaurus" },
+      { label: "Status", value: "Published" },
+    ],
+    tech: ["Docusaurus", "TypeScript", "GitHub Pages", "MDX"],
+    githubUrl: "https://github.com/Psqasim/physical-ai-humanoid-textbook",
+    liveUrl: "https://psqasim.github.io/physical-ai-humanoid-textbook/",
   },
   {
     slug: "taskflow",
@@ -67,6 +82,7 @@ export const systems: System[] = [
       "Kubernetes",
     ],
     githubUrl: "https://github.com/Psqasim/hackathon-todo",
+    liveUrl: "https://hackathon-todo-orcin.vercel.app/",
   },
   {
     slug: "factory-de-odoo",
@@ -82,7 +98,7 @@ export const systems: System[] = [
       { label: "tests", value: "4,093+" },
     ],
     tech: ["Python", "Jinja2", "AI Agents", "Odoo"],
-    githubUrl: "https://github.com/TIFAQM/Factory-de-Odoo",
+    githubUrl: "https://github.com/Inshal5Rauf1/Odoo-Development-Automation",
   },
   {
     slug: "mcp-native-developer-tool",
@@ -95,5 +111,50 @@ export const systems: System[] = [
       { label: "scope", value: "Multi-MCP" },
     ],
     tech: ["Claude Code", "MCP", "TypeScript"],
+  },
+];
+
+export interface EarlierProject {
+  name: string;
+  description: string;
+  tech: string[];
+  category: string;
+  status: "Completed" | "In Progress";
+  github?: string;
+  liveUrl?: string;
+}
+
+export const earlierWork: EarlierProject[] = [
+  {
+    name: "E-commerce FullStack Platform",
+    description:
+      "Advanced full-stack e-commerce with admin dashboard, order tracking, Clerk auth, and SendGrid email confirmations.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "SendGrid"],
+    category: "E-Commerce",
+    status: "Completed",
+  },
+  {
+    name: "Chicken E-commerce Website",
+    description:
+      "Dynamic e-commerce platform with admin panel for managing products, orders, analytics, and customer DMs.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "SendGrid"],
+    category: "E-Commerce",
+    status: "Completed",
+  },
+  {
+    name: "Dynamic Blog Platform",
+    description:
+      "Modern responsive blog with seamless content creation and management via headless CMS.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity"],
+    category: "Blog/CMS",
+    status: "Completed",
+  },
+  {
+    name: "Hackathon E-commerce Website",
+    description:
+      "Responsive online store designed from Figma prototype with dynamic product management.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "Figma"],
+    category: "E-Commerce",
+    status: "Completed",
   },
 ];

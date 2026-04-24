@@ -82,8 +82,8 @@ export function SystemCard({ system }: { system: System }) {
         ) : null}
         <span
           aria-disabled="true"
-          title="Coming in Sprint 2"
-          className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium text-[var(--color-text-muted)] opacity-60 cursor-not-allowed select-none"
+          title="Coming soon"
+          className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-700 cursor-not-allowed select-none"
         >
           <Network className="h-3.5 w-3.5" aria-hidden />
           View Architecture →
