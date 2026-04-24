@@ -17,6 +17,7 @@ export interface System {
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
+  image?: string;
 }
 
 // Skills (grouped icon grid)

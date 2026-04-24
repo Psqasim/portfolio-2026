@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Github, ExternalLink, Network } from "lucide-react";
 import type { System } from "@/types";
 import { Badge } from "@/components/ui/Badge";
@@ -5,7 +6,18 @@ import { GlowCard } from "@/components/ui/GlowCard";
 
 export function SystemCard({ system }: { system: System }) {
   return (
-    <GlowCard data-testid="system-card" className="flex flex-col gap-4">
+    <GlowCard data-testid="system-card" className="flex flex-col gap-4 overflow-hidden">
+      {system.image ? (
+        <div className="-mx-6 -mt-6 relative h-[140px] md:h-[180px] overflow-hidden rounded-t-xl border-b border-[var(--color-border)] bg-[var(--color-bg-navy)]">
+          <Image
+            src={system.image}
+            alt={`${system.name} preview`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+      ) : null}
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-wrap gap-2">
           <Badge variant={system.status} data-testid="system-status">

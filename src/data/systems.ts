@@ -23,6 +23,7 @@ export const systems: System[] = [
     ],
     githubUrl: "https://github.com/Psqasim/crm-digital-fte",
     liveUrl: "https://crm-digital-fte-two.vercel.app/",
+    image: "/projects/crm-digital-fte.png",
   },
   {
     slug: "personal-ai-employee",
@@ -46,6 +47,7 @@ export const systems: System[] = [
     ],
     githubUrl: "https://github.com/Psqasim/personal-ai-employee",
     liveUrl: "http://129.151.151.212:3000/dashboard",
+    image: "/projects/personal-ai-employee.png",
   },
   {
     slug: "physical-ai-textbook",
@@ -60,6 +62,7 @@ export const systems: System[] = [
     tech: ["Docusaurus", "TypeScript", "GitHub Pages", "MDX"],
     githubUrl: "https://github.com/Psqasim/physical-ai-humanoid-textbook",
     liveUrl: "https://psqasim.github.io/physical-ai-humanoid-textbook/",
+    image: "/projects/physical-ai-textbook.png",
   },
   {
     slug: "taskflow",
@@ -83,6 +86,7 @@ export const systems: System[] = [
     ],
     githubUrl: "https://github.com/Psqasim/hackathon-todo",
     liveUrl: "https://hackathon-todo-orcin.vercel.app/",
+    image: "/projects/taskflow.png",
   },
   {
     slug: "factory-de-odoo",
@@ -99,6 +103,7 @@ export const systems: System[] = [
     ],
     tech: ["Python", "Jinja2", "AI Agents", "Odoo"],
     githubUrl: "https://github.com/Inshal5Rauf1/Odoo-Development-Automation",
+    image: "/projects/factory-de-odoo.png",
   },
   {
     slug: "mcp-native-developer-tool",
@@ -123,6 +128,7 @@ export interface EarlierProject {
   github?: string;
   liveUrl?: string;
   privateRepo?: boolean;
+  image?: string;
 }
 
 export const earlierWork: EarlierProject[] = [
@@ -135,6 +141,7 @@ export const earlierWork: EarlierProject[] = [
     status: "Completed",
     privateRepo: true,
     liveUrl: "https://e-commerce-fullstack-website.vercel.app",
+    image: "/projects/ecommerce-fullstack.png",
   },
   {
     name: "Chicken E-commerce Website",
@@ -145,6 +152,7 @@ export const earlierWork: EarlierProject[] = [
     status: "Completed",
     privateRepo: true,
     liveUrl: "https://chicken-website-two.vercel.app",
+    image: "/projects/chicken-ecommerce.png",
   },
   {
     name: "Dynamic Blog Platform",
@@ -155,6 +163,7 @@ export const earlierWork: EarlierProject[] = [
     status: "Completed",
     github: "https://github.com/Psqasim/Blog-Website",
     liveUrl: "https://blog-website-psqasim.vercel.app",
+    image: "/projects/blog-platform.png",
   },
   {
     name: "Hackathon E-commerce Website",
@@ -165,5 +174,6 @@ export const earlierWork: EarlierProject[] = [
     status: "Completed",
     github: "https://github.com/Psqasim/hackathon-figma",
     liveUrl: "https://hackathon-figma-ecommmerce-psqasim.vercel.app",
+    image: "/projects/hackathon-ecommerce.png",
   },
 ];

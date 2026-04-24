@@ -12,10 +12,12 @@ Software developer based in Karachi, Pakistan. Working professional by day, agen
   https://github.com/Psqasim/crm-digital-fte
 - Personal AI Employee — 24/7 task execution with Claude Code + Obsidian. WhatsApp auto-reply, natural language commands, Odoo accounting integration.
   https://github.com/Psqasim/personal-ai-employee
+- Physical AI Humanoid Textbook — Interactive AI Education Platform
+  https://github.com/Psqasim/physical-ai-humanoid-textbook
 - TaskFlow — 5-phase evolution from console app to Kubernetes-deployed system with event-driven architecture.
   https://github.com/Psqasim/hackathon-todo
 - Factory-de-Odoo (Architecture Advisor) — Architecture reviewer for a 33,200+ line GSD orchestration framework generating full Odoo ERPs from a PRD.
-  https://github.com/TIFAQM/Factory-de-Odoo
+  https://github.com/Inshal5Rauf1/Odoo-Development-Automation
 - MCP-Native Developer Tool — Multi-MCP orchestration for automated PR reviews, test generation, and project scaffolding — extending Claude Code.
 
 ## Contact
@@ -23,3 +25,4 @@ Software developer based in Karachi, Pakistan. Working professional by day, agen
 Email: muhammadqasim0326@gmail.com
 GitHub: https://github.com/Psqasim
 LinkedIn: https://linkedin.com/in/muhammadqasim-dev
+X: https://x.com/psqasim0
