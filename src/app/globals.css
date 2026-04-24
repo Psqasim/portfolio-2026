@@ -77,9 +77,24 @@ body {
   animation: preloader-fill 2.4s ease-in-out forwards;
 }
 
+@keyframes preloader-scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.preloader-scan {
+  animation: preloader-scan 2.4s ease-in-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .preloader-bar {
     animation: none;
     transform: translateX(0);
+  }
+  .preloader-scan {
+    animation: none;
+    opacity: 0;
   }
 }

@@ -122,6 +122,7 @@ export interface EarlierProject {
   status: "Completed" | "In Progress";
   github?: string;
   liveUrl?: string;
+  privateRepo?: boolean;
 }
 
 export const earlierWork: EarlierProject[] = [
@@ -132,6 +133,8 @@ export const earlierWork: EarlierProject[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "SendGrid"],
     category: "E-Commerce",
     status: "Completed",
+    privateRepo: true,
+    liveUrl: "https://e-commerce-fullstack-website.vercel.app",
   },
   {
     name: "Chicken E-commerce Website",
@@ -140,6 +143,8 @@ export const earlierWork: EarlierProject[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "SendGrid"],
     category: "E-Commerce",
     status: "Completed",
+    privateRepo: true,
+    liveUrl: "https://chicken-website-two.vercel.app",
   },
   {
     name: "Dynamic Blog Platform",
@@ -148,6 +153,8 @@ export const earlierWork: EarlierProject[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity"],
     category: "Blog/CMS",
     status: "Completed",
+    github: "https://github.com/Psqasim/Blog-Website",
+    liveUrl: "https://blog-website-psqasim.vercel.app",
   },
   {
     name: "Hackathon E-commerce Website",
@@ -156,5 +163,7 @@ export const earlierWork: EarlierProject[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "Clerk", "Figma"],
     category: "E-Commerce",
     status: "Completed",
+    github: "https://github.com/Psqasim/hackathon-figma",
+    liveUrl: "https://hackathon-figma-ecommmerce-psqasim.vercel.app",
   },
 ];

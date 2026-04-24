@@ -19,7 +19,7 @@ export function About() {
             <div className="relative h-60 w-60 overflow-hidden rounded-2xl shadow-[0_0_48px_-12px_var(--color-accent-pink)] ring-1 ring-[var(--color-accent-pink)]/40">
               {imgOk ? (
                 <Image
-                  src="/profile.jpg"
+                  src="/qas.jpg"
                   alt="Portrait of Muhammad Qasim"
                   width={240}
                   height={240}
