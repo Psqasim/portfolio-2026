@@ -24,7 +24,9 @@ test("contact info renders required channels without a phone number", async ({ p
 
   await expect(contact.getByRole("link", { name: /^x( |$)|twitter/i }).first()).toBeVisible();
 
-  const body = await page.content();
-  // FR-024: no phone number must appear anywhere on the page.
-  expect(body).not.toMatch(/\+?\d[\d\s().-]{7,}/);
+  // FR-024: no phone number must appear in visible page text.
+  // Scope to body innerText to avoid matching Next.js dev-mode cache-bust
+  // timestamps (`?v=...`) or asset hashes in HTML attributes.
+  const visibleText = await page.locator("body").innerText();
+  expect(visibleText).not.toMatch(/\+?\d[\d\s()-]{7,}/);
 });

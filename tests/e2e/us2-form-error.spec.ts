@@ -23,9 +23,12 @@ test("error response shows error toast and retains fields", async ({ page }) => 
 
   await contact.getByRole("button", { name: /send/i }).click();
 
-  const alert = page.getByRole("alert");
+  // Exclude Next.js App Router's `__next-route-announcer__`, which is also
+  // `role="alert"`. Match by text to target the toast.
+  const alert = page
+    .getByRole("alert")
+    .filter({ hasText: /rate limit|error|trouble|retry/i });
   await expect(alert).toBeVisible({ timeout: 5000 });
-  await expect(alert).toContainText(/rate limit|error|trouble|retry/i);
 
   await expect(name).toHaveValue("Test Visitor");
   await expect(email).toHaveValue("visitor@example.com");
