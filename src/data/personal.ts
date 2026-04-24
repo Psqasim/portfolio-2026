@@ -26,7 +26,7 @@ export const personal: PersonalProfile = {
       href: "https://linkedin.com/in/muhammadqasim-dev",
       label: "LinkedIn",
     },
-    { platform: "x", href: "#", label: "X" },
+    { platform: "x", href: "https://x.com/psqasim0", label: "X" },
     { platform: "email", href: "mailto:muhammadqasim0326@gmail.com", label: "Email" },
   ],
 

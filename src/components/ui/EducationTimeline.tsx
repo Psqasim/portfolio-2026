@@ -2,16 +2,11 @@ import type { EducationEntry } from "@/types";
 
 export function EducationTimeline({ entries }: { entries: EducationEntry[] }) {
   return (
-    <ol
-      className="relative flex flex-col gap-4 pl-6"
-      style={{
-        backgroundImage:
-          "linear-gradient(to bottom, #f472b6 0%, #94a3b8 100%)",
-        backgroundSize: "1px 100%",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "0 0",
-      }}
-    >
+    <ol className="relative flex flex-col gap-6 pl-8">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[#f472b6] via-[#c084fc]/50 to-[#94a3b8]"
+      />
       {entries.map((entry) => (
         <li
           key={`${entry.institution}-${entry.dateRange}`}
@@ -22,13 +17,13 @@ export function EducationTimeline({ entries }: { entries: EducationEntry[] }) {
           <span
             aria-hidden
             className={
-              "absolute -left-[calc(0.5rem+1px)] top-1.5 inline-block h-3 w-3 rounded-full " +
+              "absolute -left-[25px] top-1.5 inline-block h-3 w-3 rounded-full ring-4 ring-[var(--color-bg-navy)] " +
               (entry.current
-                ? "bg-[#f472b6] shadow-[0_0_0_4px_color-mix(in_oklab,#f472b6_25%,transparent)]"
+                ? "bg-[#f472b6] shadow-[0_0_0_6px_color-mix(in_oklab,#f472b6_20%,transparent)]"
                 : "bg-[#94a3b8] dark:bg-[#475569]")
             }
           />
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1">
             <span className="text-[11px] uppercase tracking-wider text-[var(--color-text-muted)]">
               {entry.dateRange}
               {entry.current ? " · Current" : ""}
