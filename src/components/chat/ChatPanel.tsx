@@ -62,16 +62,20 @@ export default function ChatPanel({
           "bg-gradient-to-r from-[var(--color-accent-purple)]/10 via-transparent to-[var(--color-accent-pink)]/10",
         )}
       >
-        <div className="flex items-center gap-2.5 min-w-0">
+        <div className="flex items-center gap-3 min-w-0">
           <span
             aria-hidden="true"
-            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-pink)] text-white"
+            className={cn(
+              "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+              "bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-pink)] text-white",
+              "shadow-[0_0_18px_-4px_var(--color-accent-purple)] ring-1 ring-white/10",
+            )}
           >
-            <Bot className="h-4 w-4" />
+            <Bot className="h-5 w-5" />
           </span>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-[var(--color-text)] truncate">
-              Ask Qasim&rsquo;s AI
+              Ask Qasim&rsquo;s AI <span aria-hidden="true">🤖</span>
             </p>
             <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)]">
               Online · gpt-4o-mini
@@ -145,8 +149,8 @@ function WelcomeBlock({ disabled, onPick }: WelcomeBlockProps) {
           <Bot className="h-3.5 w-3.5" />
         </span>
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] px-3.5 py-2.5 text-sm text-[var(--color-text)]">
-          Salam! I&rsquo;m Qasim&rsquo;s AI assistant. Ask me anything about
-          his work — in English, اردو, or Roman Urdu.
+          I&rsquo;m Qasim&rsquo;s AI assistant. Ask me anything about his
+          projects, tech stack, or availability.
         </div>
       </div>
       <div>
