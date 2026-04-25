@@ -13,8 +13,11 @@ test("skills section renders 5 categories with counts [6, 5, 9, 2, 4] and no pro
 
   const expectedCounts = [6, 5, 9, 2, 4];
   for (let i = 0; i < expectedCounts.length; i++) {
+    // Scope to the primary marquee set; the duplicate copy is aria-hidden.
     await expect(
-      categories.nth(i).locator('[data-testid="skill-item"]'),
+      categories
+        .nth(i)
+        .locator('.marquee-set:not([aria-hidden]) [data-testid="skill-item"]'),
     ).toHaveCount(expectedCounts[i]!);
   }
 

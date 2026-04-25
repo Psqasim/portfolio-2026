@@ -12,7 +12,7 @@ test.describe("US1 — Hero", () => {
     await expect(page.getByText("Agentic AI Engineer").first()).toBeVisible();
     await expect(
       page.getByText(
-        "5 systems shipped · 200+ tests passing · Deployed on cloud",
+        "6 systems shipped · 200+ tests passing · Deployed on cloud",
       ),
     ).toBeVisible();
 

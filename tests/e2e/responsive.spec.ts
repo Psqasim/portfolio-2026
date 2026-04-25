@@ -28,6 +28,9 @@ for (const width of WIDTHS) {
         const results: string[] = [];
         const vw = window.innerWidth;
         document.querySelectorAll("main *").forEach((el) => {
+          // Skip marquee track + its descendants: the parent .marquee-mask
+          // has overflow:hidden so wide children are visually clipped.
+          if ((el as HTMLElement).closest(".marquee-track")) return;
           const rect = (el as HTMLElement).getBoundingClientRect();
           if (rect.right > vw + 1) {
             results.push(`${el.tagName.toLowerCase()}.${(el as HTMLElement).className || ""}`);

@@ -44,7 +44,7 @@ export function ChatWidget() {
         <button
           type="button"
           onClick={open}
-          aria-label="Open chat — Ask Qasim's AI"
+          aria-label="Ask Qasim's AI"
           className={cn(
             "inline-flex h-9 items-center gap-1.5 rounded-full pl-2.5 pr-3 sm:h-10 sm:pl-3 sm:pr-3.5",
             "border border-[var(--color-accent-purple)]/40 bg-[var(--color-card)]/90 backdrop-blur",

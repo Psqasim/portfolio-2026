@@ -4,7 +4,7 @@ test.use({ viewport: { width: 375, height: 812 } });
 
 test("hamburger opens drawer with 5 links; tapping Systems closes and scrolls", async ({ page }) => {
   await page.goto("/");
-  const hamburger = page.getByRole("button", { name: /menu|open|nav/i });
+  const hamburger = page.getByRole("button", { name: /open menu/i });
   await hamburger.click();
 
   const drawer = page.getByRole("dialog", { name: /menu|navigation/i });
