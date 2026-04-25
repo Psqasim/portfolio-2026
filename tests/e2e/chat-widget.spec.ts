@@ -60,6 +60,58 @@ test.describe("ChatWidget — US1 grounded English answer", () => {
   });
 });
 
+test.describe("ChatWidget — US2 multilingual mirroring", () => {
+  test("Roman Urdu input gets a Roman Urdu reply with tech-stack content", async ({
+    page,
+  }) => {
+    await page.route("**/api/chat", (route) =>
+      mockChat(
+        route,
+        [
+          "Qasim Python, FastAPI, ",
+          "OpenAI Agents SDK, MCP, aur ",
+          "Next.js pe kaam karta hai.",
+        ],
+        "getSkills",
+      ),
+    );
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const panel = page.getByRole("dialog", { name: /chat with qasim/i });
+    await panel.getByRole("textbox", { name: /type your message/i }).fill(
+      "Qasim kis tech stack pe kaam karta hai?",
+    );
+    await page.getByRole("button", { name: /send message/i }).click();
+
+    await expect(panel.getByText(/Python/i)).toBeVisible({ timeout: 5_000 });
+    await expect(panel.getByText(/karta hai/i)).toBeVisible();
+  });
+
+  test("Urdu-script input gets an Urdu-script reply", async ({ page }) => {
+    await page.route("**/api/chat", (route) =>
+      mockChat(
+        route,
+        ["قاسم نے کئی پروڈکشن سسٹمز ", "بنائے ہیں۔"],
+        "getSystems",
+      ),
+    );
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const panel = page.getByRole("dialog", { name: /chat with qasim/i });
+    await panel.getByRole("textbox", { name: /type your message/i }).fill(
+      "قاسم نے کیا کیا بنایا ہے؟",
+    );
+    await page.getByRole("button", { name: /send message/i }).click();
+
+    const reply = panel.getByText(/قاسم/);
+    await expect(reply).toBeVisible({ timeout: 5_000 });
+    const text = await reply.textContent();
+    expect(text).toMatch(/[؀-ۿ]/);
+  });
+});
+
 test.describe("ChatWidget — accessibility", () => {
   for (const viewport of [
     { width: 360, height: 800, label: "mobile-360" },

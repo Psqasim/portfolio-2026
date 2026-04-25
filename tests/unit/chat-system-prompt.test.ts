@@ -27,4 +27,10 @@ describe("SYSTEM_PROMPT", () => {
   ])("does not contain forbidden term '%s' (case-insensitive)", (term) => {
     expect(SYSTEM_PROMPT.toLowerCase()).not.toContain(term.toLowerCase());
   });
+
+  it("instructs the model to mirror the visitor's language", () => {
+    expect(SYSTEM_PROMPT).toContain("SAME language");
+    expect(SYSTEM_PROMPT).toContain("Urdu");
+    expect(SYSTEM_PROMPT).toContain("Roman Urdu");
+  });
 });

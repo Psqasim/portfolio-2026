@@ -91,9 +91,9 @@ Single Next.js project per Constitution III. **No new top-level directories.** A
 
 ### Implementation for User Story 2
 
-- [ ] T027 [US2] Modify `src/lib/chat/system-prompt.ts` — append language-mirroring instruction block: "Detect the language of each user message. Reply in the SAME language and script. Supported: English, Urdu (Nastaliq script), Roman Urdu (Latin script). Never switch languages unilaterally." Depends on T007.
-- [ ] T028 [US2] Modify `tests/unit/chat-system-prompt.test.ts` — add assertions that the prompt contains the strings `Urdu`, `Roman Urdu`, and `SAME language`; ensure no forbidden-term regressions (run full forbidden-term sweep after edit).
-- [ ] T029 [US2] Modify `tests/e2e/chat-widget.spec.ts` — add two probes: (a) send "Qasim kis tech stack pe kaam karta hai?", assert reply contains at least one Roman Urdu word marker (e.g., matches `/[a-zA-Z]/` AND contains tech-stack entries AND does NOT contain common English filler like "the" when taken as a whole — heuristic check with a relaxed threshold); (b) send `قاسم نے کیا کیا بنایا ہے؟`, assert reply contains at least one Unicode character in the Arabic/Urdu range (U+0600–U+06FF).
+- [X] T027 [US2] Modify `src/lib/chat/system-prompt.ts` — append language-mirroring instruction block: "Detect the language of each user message. Reply in the SAME language and script. Supported: English, Urdu (Nastaliq script), Roman Urdu (Latin script). Never switch languages unilaterally." Depends on T007.
+- [X] T028 [US2] Modify `tests/unit/chat-system-prompt.test.ts` — add assertions that the prompt contains the strings `Urdu`, `Roman Urdu`, and `SAME language`; ensure no forbidden-term regressions (run full forbidden-term sweep after edit).
+- [X] T029 [US2] Modify `tests/e2e/chat-widget.spec.ts` — add two probes: (a) send "Qasim kis tech stack pe kaam karta hai?", assert reply contains at least one Roman Urdu word marker (e.g., matches `/[a-zA-Z]/` AND contains tech-stack entries AND does NOT contain common English filler like "the" when taken as a whole — heuristic check with a relaxed threshold); (b) send `قاسم نے کیا کیا بنایا ہے؟`, assert reply contains at least one Unicode character in the Arabic/Urdu range (U+0600–U+06FF).
 
 **Checkpoint**: US2 complete — multilingual parity in place.
 
