@@ -46,9 +46,9 @@ export function ChatWidget() {
           onClick={open}
           aria-label="Open chat — Ask Qasim's AI"
           className={cn(
-            "hidden sm:inline-flex h-10 items-center gap-1.5 rounded-full pl-3 pr-3.5",
+            "inline-flex h-9 items-center gap-1.5 rounded-full pl-2.5 pr-3 sm:h-10 sm:pl-3 sm:pr-3.5",
             "border border-[var(--color-accent-purple)]/40 bg-[var(--color-card)]/90 backdrop-blur",
-            "text-xs font-semibold text-[var(--color-text)] shadow-lg shadow-[var(--color-accent-purple)]/15",
+            "text-[11px] font-semibold text-[var(--color-text)] sm:text-xs shadow-lg shadow-[var(--color-accent-purple)]/15",
             "transition-all hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)]",
             "focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/60",
           )}
