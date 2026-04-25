@@ -8,11 +8,11 @@ export const personal: PersonalProfile = {
   tagline: "Building autonomous systems, one agent at a time",
   location: "Karachi, Pakistan",
   heroDescription:
-    "I build autonomous AI systems that run 24/7 — MCP servers, multi-agent orchestration, and production-grade agent workflows.",
+    "I build autonomous AI systems that run 24/7 — MCP servers, multi-agent orchestration, SaaS automation, and production-grade agent workflows.",
   heroMetrics: "6 systems shipped · 200+ tests passing · Deployed on cloud",
 
   aboutBio:
-    "Software developer based in Karachi, Pakistan. Working professional by day, agentic AI systems builder around the clock. Currently enrolled in GIAIC, where I've shipped 5 production-grade AI systems through their hackathon program — from autonomous agents to MCP servers to cloud-native orchestration. I don't explore technologies. I ship them.",
+    "Software developer based in Karachi, Pakistan. Working professional by day, agentic AI systems builder around the clock. Currently enrolled in GIAIC, where I've shipped 6 production-grade AI systems — autonomous agents, MCP servers, SaaS automation, and cloud-native orchestration — using Spec-Kit Plus (Spec-Driven Development). I don't explore technologies. I ship them.",
 
   quote: {
     text: "Surpass your limits. Right here, right now.",
