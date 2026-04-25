@@ -6,6 +6,7 @@ import { ToastProvider } from "@/components/ui/Toast";
 import { Preloader } from "@/components/layout/Preloader";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { personSchema } from "@/lib/jsonld";
 import { personal } from "@/data/personal";
 import "./globals.css";
@@ -95,6 +96,7 @@ export default function RootLayout({
               {children}
               <Footer />
             </ToastProvider>
+            <ChatWidget />
           </MotionProvider>
         </ThemeProvider>
         <script
