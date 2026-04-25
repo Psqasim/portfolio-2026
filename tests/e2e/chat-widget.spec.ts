@@ -85,7 +85,9 @@ test.describe("ChatWidget — US2 multilingual mirroring", () => {
     await page.getByRole("button", { name: /send message/i }).click();
 
     await expect(panel.getByText(/Python/i)).toBeVisible({ timeout: 5_000 });
-    await expect(panel.getByText(/karta hai/i)).toBeVisible();
+    // Both the user message ("…karta hai?") and the bot reply contain
+    // "karta hai" — assert the bot reply (rendered last) is visible.
+    await expect(panel.getByText(/karta hai/i).last()).toBeVisible();
   });
 
   test("Urdu-script input gets an Urdu-script reply", async ({ page }) => {
@@ -105,7 +107,9 @@ test.describe("ChatWidget — US2 multilingual mirroring", () => {
     );
     await page.getByRole("button", { name: /send message/i }).click();
 
-    const reply = panel.getByText(/قاسم/);
+    // Both the user prompt and the bot reply start with "قاسم" — assert
+    // the bot reply (rendered last) carries Urdu-script characters.
+    const reply = panel.getByText(/قاسم/).last();
     await expect(reply).toBeVisible({ timeout: 5_000 });
     const text = await reply.textContent();
     expect(text).toMatch(/[؀-ۿ]/);
@@ -173,12 +177,16 @@ test.describe("ChatWidget — US3 session controls", () => {
     await expect(panel.getByText("ack").first()).toBeVisible({ timeout: 5_000 });
 
     await page.getByRole("button", { name: /start a new chat/i }).click();
-    await expect(panel.getByText("first")).toHaveCount(0);
-    await expect(panel.getByText("ack")).toHaveCount(0);
+    // Use exact match: the welcome screen's suggestion "What's his tech
+    // stack?" otherwise substring-matches "ack".
+    await expect(panel.getByText("first", { exact: true })).toHaveCount(0);
+    await expect(panel.getByText("ack", { exact: true })).toHaveCount(0);
 
     await input.fill("second");
     await page.getByRole("button", { name: /send message/i }).click();
-    await expect(panel.getByText("ack").first()).toBeVisible({ timeout: 5_000 });
+    await expect(panel.getByText("ack", { exact: true }).first()).toBeVisible({
+      timeout: 5_000,
+    });
 
     expect(requestBodies.length).toBe(2);
     const second = requestBodies[1] as {
