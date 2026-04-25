@@ -67,6 +67,7 @@ const roots = [
   resolve(repoRoot, ".next"),
   resolve(repoRoot, "public"),
   resolve(repoRoot, "src/data"),
+  resolve(repoRoot, "src/lib/chat"),
 ];
 
 let failures = 0;
