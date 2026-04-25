@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Download } from "lucide-react";
 import { personal } from "@/data/personal";
 import { CircuitGrid } from "@/components/ui/CircuitGrid";
 import { TerminalCard } from "@/components/ui/TerminalCard";
@@ -51,6 +52,16 @@ export function Hero() {
             >
               Ask My AI Agent
             </button>
+            <a
+              href="/muhammad-qasim-cv-2026.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-accent-cyan)]/60 px-5 py-3 text-sm font-semibold text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent-cyan)]/10 hover:text-[var(--color-accent-cyan)]"
+            >
+              <Download className="h-4 w-4" aria-hidden />
+              Download CV
+            </a>
           </div>
         </div>
 

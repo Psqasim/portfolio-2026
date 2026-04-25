@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Github, ExternalLink, Network } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import type { System } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { GlowCard } from "@/components/ui/GlowCard";
@@ -92,14 +92,6 @@ export function SystemCard({ system }: { system: System }) {
             Live
           </a>
         ) : null}
-        <span
-          aria-disabled="true"
-          title="Coming soon"
-          className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-700 cursor-not-allowed select-none"
-        >
-          <Network className="h-3.5 w-3.5" aria-hidden />
-          View Architecture →
-        </span>
       </div>
     </GlowCard>
   );

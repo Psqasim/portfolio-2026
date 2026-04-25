@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 import { personal } from "@/data/personal";
 import { FadeInSection } from "@/components/motion/FadeInSection";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EducationTimeline } from "@/components/ui/EducationTimeline";
 
+const SDD_URL =
+  "https://agentfactory.panaversity.org/docs/General-Agents-Foundations/spec-driven-development";
+
 export function About() {
   const [imgOk, setImgOk] = useState(true);
+  const bioParts = personal.aboutBio.split("Spec-Kit Plus");
 
   return (
     <FadeInSection id="about" className="py-24">
@@ -37,7 +41,21 @@ export function About() {
           </div>
           <div className="flex flex-col gap-8">
             <p className="text-base leading-relaxed text-[var(--color-text)] md:text-lg">
-              {personal.aboutBio}
+              {bioParts.map((part, i) => (
+                <Fragment key={i}>
+                  {part}
+                  {i < bioParts.length - 1 ? (
+                    <a
+                      href={SDD_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[var(--color-accent-purple)] underline-offset-4 hover:underline hover:text-[var(--color-accent-pink)]"
+                    >
+                      Spec-Kit Plus
+                    </a>
+                  ) : null}
+                </Fragment>
+              ))}
             </p>
             <EducationTimeline entries={personal.education} />
           </div>

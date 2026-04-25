@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Github, Linkedin, Mail, MapPin, Send, Twitter } from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin, Send, Twitter } from "lucide-react";
 import { personal } from "@/data/personal";
 import { FadeInSection } from "@/components/motion/FadeInSection";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -129,6 +129,16 @@ export function Contact() {
               <MapPin className="h-5 w-5 text-[var(--color-accent-purple)]" aria-hidden />
               <span>{personal.location}</span>
             </GlowCard>
+            <a
+              href="/muhammad-qasim-cv-2026.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 rounded-md border border-[var(--color-accent-cyan)]/60 px-3 py-2 text-sm font-medium text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent-cyan)]/10 hover:text-[var(--color-accent-cyan)]"
+            >
+              <Download className="h-4 w-4" aria-hidden />
+              Download CV
+            </a>
             <div className="flex gap-3">
               {iconSocials.map((s) => {
                 const Icon = platformIcon(s.platform);
