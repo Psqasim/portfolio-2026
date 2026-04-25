@@ -99,6 +99,72 @@ body {
   }
 }
 
+/* Infinite horizontal marquee — pure CSS, GPU-accelerated translateX. */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-mask {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-track[data-dir="left"] {
+  animation: marquee-left var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-track[data-dir="right"] {
+  animation: marquee-right var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-mask[data-pause-hover="true"]:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-set {
+  display: flex;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: calc(var(--marquee-duration, 40s) * 1.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 /* Subtle pulse halo on the chat FAB to gently draw attention. */
 @keyframes chat-fab-pulse {
   0%, 100% {

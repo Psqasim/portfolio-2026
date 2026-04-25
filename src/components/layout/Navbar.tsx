@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, m } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { smoothScrollTo } from "@/lib/scroll";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { MobileNavMenu } from "@/components/layout/MobileNavMenu";
 
 const LINKS = [
   { id: "home", label: "Home" },
@@ -100,63 +100,13 @@ export function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {drawerOpen && (
-          <m.div
-            key="drawer-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/50 md:hidden"
-            onClick={() => setDrawerOpen(false)}
-          />
-        )}
-        {drawerOpen && (
-          <m.aside
-            key="drawer"
-            role="dialog"
-            aria-label="Navigation menu"
-            aria-modal="true"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.25, ease: "easeOut" }}
-            className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-6 border-l border-[var(--color-border)] bg-[var(--color-bg-navy)] px-6 py-5 md:hidden"
-          >
-            <div className="flex items-center justify-between">
-              <ThemeToggle />
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={() => setDrawerOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-text)]"
-              >
-                <X className="h-5 w-5" aria-hidden />
-              </button>
-            </div>
-            <ul className="flex flex-col gap-2">
-              {LINKS.map((link) => (
-                <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    aria-current={active === link.id ? "true" : undefined}
-                    onClick={(e) => onNavClick(e, link.id)}
-                    className={
-                      "block rounded-md px-3 py-2 text-base " +
-                      (active === link.id
-                        ? "bg-[var(--color-accent-pink)]/10 text-[var(--color-accent-pink)]"
-                        : "text-[var(--color-text)] hover:bg-[var(--color-border)]/30")
-                    }
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </m.aside>
-        )}
-      </AnimatePresence>
+      <MobileNavMenu
+        open={drawerOpen}
+        active={active}
+        links={LINKS}
+        onClose={() => setDrawerOpen(false)}
+        onNavigate={onNavClick}
+      />
     </>
   );
 }
