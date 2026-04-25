@@ -306,6 +306,8 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 ## Active Technologies
 - TypeScript 5.x (strict mode), Node 20.x (Vercel runtime + Next.js 15 (App Router), Tailwind CSS 4, Framer (001-core-portfolio-site)
 - None. All content is hardcoded TypeScript modules under (001-core-portfolio-site)
+- TypeScript 5.x (`strict`), Node 20.x (Vercel runtime), React 19.1.0. + Next.js 15 (App Router), Tailwind CSS 4, Framer (002-chatbot-widget)
+- None persistent. In-memory `Map` for rate-limit counters (002-chatbot-widget)
 
 ## Recent Changes
 - 001-core-portfolio-site: Added TypeScript 5.x (strict mode), Node 20.x (Vercel runtime + Next.js 15 (App Router), Tailwind CSS 4, Framer
