@@ -38,7 +38,29 @@ export function ChatWidget() {
   }, []);
 
   return (
-    <>
+    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 md:bottom-6 md:right-6">
+      {/* Pill label — makes the FAB's purpose obvious without a hover. */}
+      {!isOpen ? (
+        <button
+          type="button"
+          onClick={open}
+          aria-label="Open chat — Ask Qasim's AI"
+          className={cn(
+            "hidden sm:inline-flex h-10 items-center gap-1.5 rounded-full pl-3 pr-3.5",
+            "border border-[var(--color-accent-purple)]/40 bg-[var(--color-card)]/90 backdrop-blur",
+            "text-xs font-semibold text-[var(--color-text)] shadow-lg shadow-[var(--color-accent-purple)]/15",
+            "transition-all hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)]",
+            "focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/60",
+          )}
+        >
+          <span
+            aria-hidden="true"
+            className="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent-cyan)]"
+          />
+          Ask Qasim&rsquo;s AI
+        </button>
+      ) : null}
+
       <button
         type="button"
         onClick={toggle}
@@ -46,12 +68,11 @@ export function ChatWidget() {
         aria-label={isOpen ? "Close chat" : "Open chat"}
         aria-expanded={isOpen}
         className={cn(
-          "fixed bottom-4 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full",
+          "inline-flex h-14 w-14 items-center justify-center rounded-full",
           "bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-pink)] text-white",
           "shadow-[0_0_24px_-4px_var(--color-accent-purple)]",
           "transition-transform hover:scale-105",
           "focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/70 focus:ring-offset-2 focus:ring-offset-[var(--color-bg-navy)]",
-          "md:bottom-6 md:right-6",
           !isOpen && "chat-fab-pulse",
         )}
       >
@@ -65,6 +86,6 @@ export function ChatWidget() {
       {hasOpened ? (
         <ChatHost isOpen={isOpen} onClose={() => setIsOpen(false)} />
       ) : null}
-    </>
+    </div>
   );
 }
