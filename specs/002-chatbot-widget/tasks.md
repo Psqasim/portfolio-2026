@@ -107,9 +107,9 @@ Single Next.js project per Constitution III. **No new top-level directories.** A
 
 ### Implementation for User Story 3
 
-- [ ] T030 [US3] Modify `src/components/chat/ChatPanel.tsx` — add header controls: minimize button (X icon, closes panel but does NOT touch `session.messages`) and "New Chat" button (calls `newChat()` from the hook); keyboard-operable (Tab order: New Chat → Minimize → messages → input → send), visible focus ring, `aria-label`s set.
-- [ ] T031 [US3] Modify `src/components/chat/useChatSession.ts` — expose `newChat()` that replaces the session with `{ id: crypto.randomUUID(), messages: [], status: { kind: 'idle' }, isOpen: true }`; confirm `isOpen` toggle does NOT mutate `messages` per data-model.md Entity 1 reset semantics.
-- [ ] T032 [US3] Modify `tests/e2e/chat-widget.spec.ts` — add three scenarios: (a) send 3 messages, click minimize, reopen, assert all 6 bubbles (3 user + 3 assistant) still present; (b) click "New Chat", assert messages list is empty and next send does not reference earlier content in request body (inspect via Playwright network fixture); (c) `page.reload()`, assert widget reopens to empty session.
+- [X] T030 [US3] Modify `src/components/chat/ChatPanel.tsx` — add header controls: minimize button (X icon, closes panel but does NOT touch `session.messages`) and "New Chat" button (calls `newChat()` from the hook); keyboard-operable (Tab order: New Chat → Minimize → messages → input → send), visible focus ring, `aria-label`s set.
+- [X] T031 [US3] Modify `src/components/chat/useChatSession.ts` — expose `newChat()` that replaces the session with `{ id: crypto.randomUUID(), messages: [], status: { kind: 'idle' }, isOpen: true }`; confirm `isOpen` toggle does NOT mutate `messages` per data-model.md Entity 1 reset semantics.
+- [X] T032 [US3] Modify `tests/e2e/chat-widget.spec.ts` — add three scenarios: (a) send 3 messages, click minimize, reopen, assert all 6 bubbles (3 user + 3 assistant) still present; (b) click "New Chat", assert messages list is empty and next send does not reference earlier content in request body (inspect via Playwright network fixture); (c) `page.reload()`, assert widget reopens to empty session.
 
 **Checkpoint**: All three user stories independently functional.
 

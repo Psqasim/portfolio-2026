@@ -5,15 +5,22 @@ import { X, Plus } from "lucide-react";
 import { ChatInput } from "./ChatInput";
 import { ChatMessage } from "./ChatMessage";
 import { TypingIndicator } from "./TypingIndicator";
-import { useChatSession } from "./useChatSession";
+import type { ChatSession } from "@/types/chat";
 import { cn } from "@/lib/cn";
 
 interface ChatPanelProps {
+  session: ChatSession;
+  send: (text: string) => Promise<void>;
+  newChat: () => void;
   onClose: () => void;
 }
 
-export default function ChatPanel({ onClose }: ChatPanelProps) {
-  const { session, send, newChat } = useChatSession();
+export default function ChatPanel({
+  session,
+  send,
+  newChat,
+  onClose,
+}: ChatPanelProps) {
   const listRef = useRef<HTMLDivElement | null>(null);
 
   const isStreaming =

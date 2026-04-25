@@ -112,6 +112,106 @@ test.describe("ChatWidget — US2 multilingual mirroring", () => {
   });
 });
 
+test.describe("ChatWidget — US3 session controls", () => {
+  test("minimize preserves messages; reopen shows the same conversation", async ({
+    page,
+  }) => {
+    let call = 0;
+    await page.route("**/api/chat", (route) => {
+      call += 1;
+      return mockChat(route, [`reply ${call}`], "");
+    });
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const panel = page.getByRole("dialog", { name: /chat with qasim/i });
+    const input = panel.getByRole("textbox", { name: /type your message/i });
+    const send = page.getByRole("button", { name: /send message/i });
+
+    for (let i = 1; i <= 3; i++) {
+      await input.fill(`msg ${i}`);
+      await send.click();
+      await expect(panel.getByText(`reply ${i}`)).toBeVisible({
+        timeout: 5_000,
+      });
+    }
+
+    await page.getByRole("button", { name: /minimize chat/i }).click();
+    await expect(panel).toBeHidden();
+
+    await page.getByRole("button", { name: /open chat/i }).click();
+    await expect(panel).toBeVisible();
+
+    for (let i = 1; i <= 3; i++) {
+      await expect(panel.getByText(`msg ${i}`)).toBeVisible();
+      await expect(panel.getByText(`reply ${i}`)).toBeVisible();
+    }
+  });
+
+  test("New Chat clears the session and the next request omits prior history", async ({
+    page,
+  }) => {
+    const requestBodies: unknown[] = [];
+
+    await page.route("**/api/chat", async (route) => {
+      try {
+        const post = route.request().postData();
+        if (post) requestBodies.push(JSON.parse(post));
+      } catch {
+        /* ignore parse errors */
+      }
+      return mockChat(route, ["ack"], "");
+    });
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const panel = page.getByRole("dialog", { name: /chat with qasim/i });
+    const input = panel.getByRole("textbox", { name: /type your message/i });
+
+    await input.fill("first");
+    await page.getByRole("button", { name: /send message/i }).click();
+    await expect(panel.getByText("ack").first()).toBeVisible({ timeout: 5_000 });
+
+    await page.getByRole("button", { name: /start a new chat/i }).click();
+    await expect(panel.getByText("first")).toHaveCount(0);
+    await expect(panel.getByText("ack")).toHaveCount(0);
+
+    await input.fill("second");
+    await page.getByRole("button", { name: /send message/i }).click();
+    await expect(panel.getByText("ack").first()).toBeVisible({ timeout: 5_000 });
+
+    expect(requestBodies.length).toBe(2);
+    const second = requestBodies[1] as {
+      message: string;
+      history: Array<{ content: string }>;
+    };
+    expect(second.message).toBe("second");
+    expect(second.history.find((h) => h.content === "first")).toBeUndefined();
+  });
+
+  test("page reload starts an empty session", async ({ page }) => {
+    await page.route("**/api/chat", (route) =>
+      mockChat(route, ["hello back"], ""),
+    );
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const panel = page.getByRole("dialog", { name: /chat with qasim/i });
+    await panel
+      .getByRole("textbox", { name: /type your message/i })
+      .fill("survives reload?");
+    await page.getByRole("button", { name: /send message/i }).click();
+    await expect(panel.getByText("hello back")).toBeVisible({ timeout: 5_000 });
+
+    await page.reload();
+
+    await page.getByRole("button", { name: /open chat/i }).click();
+    const refreshed = page.getByRole("dialog", { name: /chat with qasim/i });
+    await expect(refreshed.getByText("survives reload?")).toHaveCount(0);
+    await expect(refreshed.getByText("hello back")).toHaveCount(0);
+  });
+});
+
 test.describe("ChatWidget — accessibility", () => {
   for (const viewport of [
     { width: 360, height: 800, label: "mobile-360" },

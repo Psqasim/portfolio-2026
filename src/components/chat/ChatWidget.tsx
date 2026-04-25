@@ -5,19 +5,30 @@ import dynamic from "next/dynamic";
 import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-const ChatPanel = dynamic(() => import("./ChatPanel"), {
+// ChatHost holds the session state. It's lazy-loaded the first time the
+// user opens the panel so the homepage's eager bundle stays unchanged.
+const ChatHost = dynamic(() => import("./ChatHost"), {
   ssr: false,
   loading: () => null,
 });
 
 export function ChatWidget() {
+  const [hasOpened, setHasOpened] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  function toggle() {
+    setIsOpen((open) => {
+      const next = !open;
+      if (next) setHasOpened(true);
+      return next;
+    });
+  }
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setIsOpen((v) => !v)}
+        onClick={toggle}
         title="Need help? Ask AI ✨"
         aria-label={isOpen ? "Close chat" : "Open chat"}
         aria-expanded={isOpen}
@@ -30,16 +41,8 @@ export function ChatWidget() {
         <Sparkles aria-hidden="true" className="h-5 w-5" />
       </button>
 
-      {isOpen ? (
-        <div
-          className={cn(
-            "fixed z-50",
-            "inset-x-0 bottom-0 top-auto h-[80dvh]",
-            "md:inset-auto md:bottom-24 md:right-6 md:h-[600px] md:w-[400px]",
-          )}
-        >
-          <ChatPanel onClose={() => setIsOpen(false)} />
-        </div>
+      {hasOpened ? (
+        <ChatHost isOpen={isOpen} onClose={() => setIsOpen(false)} />
       ) : null}
     </>
   );
