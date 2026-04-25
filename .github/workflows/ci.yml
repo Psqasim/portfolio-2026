@@ -87,7 +87,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+        env:
+          OPENAI_API_KEY: build-time-placeholder
       - run: pnpm check:forbidden
+      - run: pnpm check:bundle
 
   e2e:
     needs: build
@@ -104,6 +107,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build
+        env:
+          OPENAI_API_KEY: build-time-placeholder
       - run: pnpm test:e2e
         env:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
+          OPENAI_API_KEY: build-time-placeholder

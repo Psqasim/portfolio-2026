@@ -54,3 +54,6 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Claude Code runtime state (commands/skills are tracked; lock is not)
+.claude/scheduled_tasks.lock

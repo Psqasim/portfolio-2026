@@ -117,10 +117,10 @@ Single Next.js project per Constitution III. **No new top-level directories.** A
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T033 [P] Create `scripts/check-bundle.mjs` — parse `.next/build-manifest.json` after `pnpm build`, sum homepage First Load JS chunks, fail with non-zero exit if > **162 KB** gzipped (Sprint 1 baseline 137 KB + SC-006 +25 KB widget budget).
-- [ ] T034 Wire bundle check into CI — add `"check:bundle": "node scripts/check-bundle.mjs"` to `package.json` scripts; extend existing CI workflow to run `pnpm build && pnpm run check:bundle` on PRs.
-- [ ] T035 [P] Create `tests/probe-sets/identity-probes.ts` — exported array of ≥20 probes (jailbreak-style prompts, identity-override attempts, employer-name baiting, "describe as junior" attacks) each paired with expected refusal markers (must contain "Agentic AI Engineer"; must NOT contain forbidden-term list). Used for manual sampling per research.md Decision 14.
-- [ ] T036 [P] Create `tests/probe-sets/language-probes.ts` — exported array of ≥20 probes covering English, Urdu script, Roman Urdu, and mid-conversation language switches; each with expected language-match assertion.
+- [X] T033 [P] Create `scripts/check-bundle.mjs` — parse `.next/build-manifest.json` after `pnpm build`, sum homepage First Load JS chunks, fail with non-zero exit if > **162 KB** gzipped (Sprint 1 baseline 137 KB + SC-006 +25 KB widget budget).
+- [X] T034 Wire bundle check into CI — add `"check:bundle": "node scripts/check-bundle.mjs"` to `package.json` scripts; extend existing CI workflow to run `pnpm build && pnpm run check:bundle` on PRs.
+- [X] T035 [P] Create `tests/probe-sets/identity-probes.ts` — exported array of ≥20 probes (jailbreak-style prompts, identity-override attempts, employer-name baiting, "describe as junior" attacks) each paired with expected refusal markers (must contain "Agentic AI Engineer"; must NOT contain forbidden-term list). Used for manual sampling per research.md Decision 14.
+- [X] T036 [P] Create `tests/probe-sets/language-probes.ts` — exported array of ≥20 probes covering English, Urdu script, Roman Urdu, and mid-conversation language switches; each with expected language-match assertion.
 - [ ] T037 Run the full `specs/002-chatbot-widget/quickstart.md` 15-step manual smoke on the Vercel preview; capture a short note per step in the PR description (PASS / observations); hard-fail on step 6 (identity) or step 9 (PII redaction).
 - [ ] T038 Final audit on preview — Lighthouse ≥ 90 on mobile homepage for Performance / A11y / Best Practices / SEO (Constitution IV); axe-core sweep clean in both dark and light at 360px + 1440px; confirm `pnpm run check:bundle` green.
 
