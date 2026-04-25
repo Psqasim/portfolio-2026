@@ -175,10 +175,19 @@ describe("POST /api/chat — happy path streaming", () => {
       Array<{ role: string; content: string }>,
       { stream?: boolean; maxTurns?: number },
     ];
-    expect(input).toEqual([
-      { role: "user", content: "Salaam!" },
-      { role: "user", content: "Hello" },
-    ]);
+    // History + new turn are wrapped via the SDK's `user()` / `assistant()`
+    // helpers so the OpenAI Agents SDK schema is satisfied (assistant items
+    // need status + content arrays). Assert on shape, not on the helper's
+    // exact returned object identity.
+    expect(input).toHaveLength(2);
+    expect(input[0]).toMatchObject({
+      role: "user",
+      content: [{ type: "input_text", text: "Salaam!" }],
+    });
+    expect(input[1]).toMatchObject({
+      role: "user",
+      content: [{ type: "input_text", text: "Hello" }],
+    });
     expect(options.stream).toBe(true);
     expect(options.maxTurns).toBe(2);
   });

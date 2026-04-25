@@ -98,3 +98,25 @@ body {
     opacity: 0;
   }
 }
+
+/* Subtle pulse halo on the chat FAB to gently draw attention. */
+@keyframes chat-fab-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent-purple) 50%, transparent),
+                0 0 24px -4px var(--color-accent-purple);
+  }
+  50% {
+    box-shadow: 0 0 0 10px color-mix(in oklab, var(--color-accent-purple) 0%, transparent),
+                0 0 24px -4px var(--color-accent-purple);
+  }
+}
+
+.chat-fab-pulse {
+  animation: chat-fab-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-fab-pulse {
+    animation: none;
+  }
+}

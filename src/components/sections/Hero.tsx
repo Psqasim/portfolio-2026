@@ -44,10 +44,10 @@ export function Hero() {
             </Link>
             <button
               type="button"
-              disabled
-              aria-disabled="true"
-              title="Coming soon"
-              className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] px-5 py-3 text-sm font-semibold text-[var(--color-text-muted)] opacity-60 cursor-not-allowed"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("chat:open"));
+              }}
+              className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-accent-purple)] px-5 py-3 text-sm font-semibold text-[var(--color-text)] transition-colors hover:bg-[var(--color-accent-purple)]/10 hover:text-[var(--color-accent-purple)]"
             >
               Ask My AI Agent
             </button>

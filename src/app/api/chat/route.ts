@@ -2,7 +2,7 @@
 // Contract: specs/002-chatbot-widget/contracts/chat-api.md
 
 import { z } from "zod";
-import { run } from "@openai/agents";
+import { run, user, assistant } from "@openai/agents";
 import { chatAgent } from "@/lib/chat/agent";
 import { sanitize } from "@/lib/chat/sanitizer";
 import { check as checkRateLimit } from "@/lib/chat/rate-limiter";
@@ -90,20 +90,23 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
+  // Build the SDK-shaped input. Assistant entries MUST be re-wrapped via the
+  // `assistant()` helper so the SDK schema (status: "completed", content as
+  // an `[{type: "output_text"}]` array) is satisfied — passing a plain string
+  // there is what was breaking the second message.
   const input = [
-    ...parsed.data.history.map((m) => ({ role: m.role, content: m.content })),
-    { role: "user" as const, content: sanitized.text },
+    ...parsed.data.history.map((m) =>
+      m.role === "assistant" ? assistant(m.content) : user(m.content),
+    ),
+    user(sanitized.text),
   ];
 
   let streamed: AsyncIterable<unknown>;
   try {
-    // The SDK's `run` overloads infer a more specific input type than our
-    // plain {role, content}[] shape; cast at the call boundary.
-    streamed = (await run(
-      chatAgent,
-      input as unknown as Parameters<typeof run>[1],
-      { stream: true, maxTurns: 2 },
-    )) as unknown as AsyncIterable<unknown>;
+    streamed = (await run(chatAgent, input, {
+      stream: true,
+      maxTurns: 2,
+    })) as unknown as AsyncIterable<unknown>;
   } catch {
     return jsonError("provider_error");
   }

@@ -42,7 +42,7 @@ export function ChatInput({ disabled, onSend }: ChatInputProps) {
   return (
     <form
       onSubmit={onFormSubmit}
-      className="flex items-end gap-2 border-t border-[var(--color-border)] bg-[var(--color-card)] p-3"
+      className="flex items-end gap-2 border-t border-[var(--color-border)] bg-[var(--color-card)] px-3 py-3"
     >
       <div className="flex-1">
         <textarea
@@ -56,10 +56,11 @@ export function ChatInput({ disabled, onSend }: ChatInputProps) {
           aria-label="Type your message"
           disabled={disabled}
           className={cn(
-            "w-full resize-none rounded-md border bg-[var(--color-bg-navy)] px-3 py-2 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/60",
+            "w-full resize-none rounded-xl border bg-[var(--color-bg-navy)] px-4 py-2.5 text-sm leading-relaxed text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]",
+            "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-purple)]/60",
             overCap
-              ? "border-[color-mix(in_oklab,#ef4444_50%,transparent)]"
-              : "border-[var(--color-border)]",
+              ? "border-[color-mix(in_oklab,#ef4444_60%,transparent)]"
+              : "border-[var(--color-border)] hover:border-[var(--color-accent-purple)]/40 focus:border-[var(--color-accent-purple)]/60",
             disabled && "opacity-60",
           )}
         />
@@ -82,10 +83,10 @@ export function ChatInput({ disabled, onSend }: ChatInputProps) {
         disabled={!canSend}
         aria-label="Send message"
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-md transition-colors",
+          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all",
           canSend
-            ? "bg-[var(--color-accent-purple)] text-[var(--color-bg-navy)] hover:bg-[var(--color-accent-pink)]"
-            : "bg-[var(--color-border)] text-[var(--color-text-muted)] cursor-not-allowed",
+            ? "bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-pink)] text-white shadow-md shadow-[var(--color-accent-purple)]/30 hover:scale-105"
+            : "bg-[var(--color-border)]/40 text-[var(--color-text-muted)] cursor-not-allowed",
         )}
       >
         <Send aria-hidden="true" className="h-4 w-4" />
