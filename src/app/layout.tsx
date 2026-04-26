@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Muhammad Qasim — Agentic AI Engineer",
     description:
-      "Autonomous AI systems that run 24/7. 5 shipped, 200+ tests, deployed on cloud.",
+      "Autonomous AI systems that run 24/7. 6 shipped, 200+ tests, deployed on cloud.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
