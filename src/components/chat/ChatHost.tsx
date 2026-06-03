@@ -15,7 +15,7 @@ interface ChatHostProps {
 }
 
 export default function ChatHost({ isOpen, onClose }: ChatHostProps) {
-  const { session, send, newChat } = useChatSession();
+  const { session, send, newChat, retry } = useChatSession();
 
   return (
     <div
@@ -38,6 +38,7 @@ export default function ChatHost({ isOpen, onClose }: ChatHostProps) {
         session={session}
         send={send}
         newChat={newChat}
+        retry={retry}
         onClose={onClose}
       />
     </div>

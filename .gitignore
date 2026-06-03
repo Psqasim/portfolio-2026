@@ -57,3 +57,6 @@ Thumbs.db
 
 # Claude Code runtime state (commands/skills are tracked; lock is not)
 .claude/scheduled_tasks.lock
+
+# Personal notes (not tracked)
+NOTES_*.md

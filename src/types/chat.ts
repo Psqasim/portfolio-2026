@@ -5,6 +5,10 @@ export type ChatErrorCode =
   | "invalid_input"
   | "input_too_long"
   | "rate_limited"
+  | "invalid_api_key"
+  | "insufficient_quota"
+  | "rate_limit_exceeded"
+  | "provider_unavailable"
   | "provider_error"
   | "internal_error";
 

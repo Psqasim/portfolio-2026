@@ -55,6 +55,7 @@ export interface UseChatSessionResult {
   send: (text: string) => Promise<void>;
   newChat: () => void;
   setOpen: (open: boolean) => void;
+  retry: () => void;
 }
 
 export function useChatSession(): UseChatSessionResult {
@@ -242,5 +243,28 @@ export function useChatSession(): UseChatSessionResult {
     }));
   }, []);
 
-  return { session, send, newChat, setOpen };
+  const retry = useCallback(() => {
+    // Capture the last user text via a functional read, then strip the failed
+    // pair and re-fire send(). React batches the two setSession calls so the
+    // user message visually persists with no flicker.
+    let textToRetry: string | null = null;
+    setSession((s) => {
+      const msgs = s.messages;
+      if (msgs.length < 2) return s;
+      const last = msgs[msgs.length - 1];
+      const prev = msgs[msgs.length - 2];
+      if (last?.state !== "failed" || !prev || prev.role !== "user") return s;
+      textToRetry = prev.content;
+      return {
+        ...s,
+        messages: msgs.slice(0, msgs.length - 2),
+        status: { kind: "idle" },
+      };
+    });
+    if (textToRetry !== null) {
+      void send(textToRetry);
+    }
+  }, [send]);
+
+  return { session, send, newChat, setOpen, retry };
 }

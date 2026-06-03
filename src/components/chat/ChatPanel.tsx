@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { X, RotateCcw, Bot } from "lucide-react";
+import { X, RotateCcw, Bot, AlertTriangle, RefreshCw } from "lucide-react";
 import { ChatInput } from "./ChatInput";
 import { ChatMessage } from "./ChatMessage";
 import { TypingIndicator } from "./TypingIndicator";
-import type { ChatSession } from "@/types/chat";
+import type { ChatError, ChatSession } from "@/types/chat";
 import { cn } from "@/lib/cn";
 
 const SUGGESTIONS: readonly string[] = [
@@ -19,6 +19,7 @@ interface ChatPanelProps {
   session: ChatSession;
   send: (text: string) => Promise<void>;
   newChat: () => void;
+  retry: () => void;
   onClose: () => void;
 }
 
@@ -26,6 +27,7 @@ export default function ChatPanel({
   session,
   send,
   newChat,
+  retry,
   onClose,
 }: ChatPanelProps) {
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -39,8 +41,8 @@ export default function ChatPanel({
     el.scrollTop = el.scrollHeight;
   }, [session.messages, session.status.kind]);
 
-  const errorMsg =
-    session.status.kind === "error" ? session.status.lastError.message : null;
+  const lastError: ChatError | null =
+    session.status.kind === "error" ? session.status.lastError : null;
 
   const isEmpty = session.messages.length === 0;
 
@@ -114,13 +116,8 @@ export default function ChatPanel({
           session.messages.map((m) => <ChatMessage key={m.id} message={m} />)
         )}
         {isStreaming ? <TypingIndicator label="Thinking" /> : null}
-        {errorMsg ? (
-          <div
-            role="alert"
-            className="rounded-lg border border-[color-mix(in_oklab,#ef4444_50%,transparent)] bg-[color-mix(in_oklab,#ef4444_10%,transparent)] px-3 py-2 text-xs text-[var(--color-text)]"
-          >
-            {errorMsg}
-          </div>
+        {lastError ? (
+          <ErrorNotice error={lastError} onRetry={retry} onClose={onClose} />
         ) : null}
       </div>
 
@@ -129,6 +126,80 @@ export default function ChatPanel({
       <footer className="border-t border-[var(--color-border)] bg-[var(--color-card)] px-3 py-1.5 text-center text-[10px] text-[var(--color-text-muted)]">
         Powered by OpenAI · session-only memory
       </footer>
+    </div>
+  );
+}
+
+interface ErrorNoticeProps {
+  error: ChatError;
+  onRetry: () => void;
+  onClose: () => void;
+}
+
+const PROVIDER_CODES = new Set([
+  "invalid_api_key",
+  "insufficient_quota",
+  "rate_limit_exceeded",
+  "provider_unavailable",
+  "provider_error",
+]);
+
+function ErrorNotice({ error, onRetry, onClose }: ErrorNoticeProps) {
+  // The Contact-section hint only makes sense when the AI is down (not for
+  // input-validation errors like "too long" or per-IP rate limits).
+  const showContactFallback = PROVIDER_CODES.has(error.code);
+
+  function scrollToContact() {
+    onClose();
+    // Defer scroll until after the panel transition so the target lands in view.
+    setTimeout(() => {
+      const el = document.getElementById("contact");
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 200);
+  }
+
+  return (
+    <div
+      role="alert"
+      className={cn(
+        "flex items-start gap-2 rounded-lg border px-3 py-2 text-xs",
+        // Neutral border with a barely-there amber tint — informational, not alarming.
+        "border-[var(--color-border)] bg-[color-mix(in_oklab,#f59e0b_6%,transparent)]",
+        "text-[var(--color-text)]",
+      )}
+    >
+      <AlertTriangle
+        aria-hidden="true"
+        className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[color-mix(in_oklab,#f59e0b_70%,white)]"
+      />
+      <div className="flex-1 space-y-1.5">
+        <p className="leading-snug">{error.message}</p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          {error.retryable ? (
+            <button
+              type="button"
+              onClick={onRetry}
+              className={cn(
+                "inline-flex items-center gap-1 rounded border border-[var(--color-border)] bg-[var(--color-card)] px-2 py-0.5 text-[11px] font-medium text-[var(--color-text)]",
+                "hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)]",
+                "focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/60",
+              )}
+            >
+              <RefreshCw aria-hidden="true" className="h-3 w-3" />
+              Retry
+            </button>
+          ) : null}
+          {showContactFallback ? (
+            <button
+              type="button"
+              onClick={scrollToContact}
+              className="text-[11px] text-[var(--color-text-muted)] underline-offset-2 hover:text-[var(--color-accent-purple)] hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-purple)]/60 rounded"
+            >
+              Or contact Qasim directly
+            </button>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

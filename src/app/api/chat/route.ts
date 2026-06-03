@@ -7,8 +7,10 @@ import { chatAgent } from "@/lib/chat/agent";
 import { sanitize } from "@/lib/chat/sanitizer";
 import { check as checkRateLimit } from "@/lib/chat/rate-limiter";
 import {
+  classifyProviderError,
   errorResponseBody,
   httpStatusFor,
+  logProviderError,
   makeChatError,
 } from "@/lib/chat/errors";
 import { SSE_HEADERS, makeSseStream } from "@/lib/chat/sse";
@@ -107,8 +109,10 @@ export async function POST(request: Request): Promise<Response> {
       stream: true,
       maxTurns: 2,
     })) as unknown as AsyncIterable<unknown>;
-  } catch {
-    return jsonError("provider_error");
+  } catch (err) {
+    const code = classifyProviderError(err);
+    logProviderError(code, err);
+    return jsonError(code);
   }
 
   const { stream, emit, close } = makeSseStream();
@@ -143,8 +147,10 @@ export async function POST(request: Request): Promise<Response> {
         }
       }
       emit("done", { finishReason: "stop" });
-    } catch {
-      emit("error", makeChatError("provider_error"));
+    } catch (err) {
+      const code = classifyProviderError(err);
+      logProviderError(code, err);
+      emit("error", makeChatError(code));
     } finally {
       close();
     }
